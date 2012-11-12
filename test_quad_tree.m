@@ -1,4 +1,4 @@
-function test()
+function test_quad_tree()
 
 q = quad_tree([0 0 10 10], 4, 8);
 n = 500;

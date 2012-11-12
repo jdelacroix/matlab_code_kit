@@ -16,7 +16,7 @@ classdef lcrs_tree < handle
                     obj.root_ = [];
                     obj.height_ = -1;
                 case 1
-                    if(isa(varargin{1},'node'))
+                    if(isa(varargin{1},'lrcs_tree_node'))
                         obj.root_ = varargin{1};
                     else
                         obj.root_ = node(varargin{1});
