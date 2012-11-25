@@ -56,4 +56,3 @@ classdef quad_tree_quad < handle
     end
     
 end
-

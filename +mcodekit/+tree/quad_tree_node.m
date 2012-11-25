@@ -9,10 +9,10 @@ classdef quad_tree_node < handle
         max_depth_
         depth_
         geometry_
-        quads_ = quad_tree_node.empty(1,0);
+        quads_ = mcodekit.tree.quad_tree_node.empty(1,0);
         point_count_
         partitioned_
-        points_ = quad_tree_point.empty(1,0);
+        points_ = mcodekit.tree.quad_tree_point.empty(1,0);
     end
     
     methods
@@ -22,7 +22,7 @@ classdef quad_tree_node < handle
             obj.depth_ = qt_depth;
             obj.node_capacity_ = qt_node_capacity;
             obj.max_depth_ = qt_max_depth;
-            obj.geometry_ = quad_tree_quad(qt_parent, qt_geometry);
+            obj.geometry_ = mcodekit.tree.quad_tree_quad(qt_parent, qt_geometry);
             obj.point_count_ = 0;
             obj.partitioned_ = false;
         end
@@ -53,16 +53,16 @@ classdef quad_tree_node < handle
                 quad = obj.geometry_;
 
                 sub_geometry = [quad.x_ quad.y_ quad.width_/2 quad.height_/2];
-                obj.quads_(1) = quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
+                obj.quads_(1) = mcodekit.tree.quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
                 
                 sub_geometry = [quad.x_+quad.width_/2 quad.y_ quad.width_/2 quad.height_/2];
-                obj.quads_(2) = quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
+                obj.quads_(2) = mcodekit.tree.quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
 
                 sub_geometry = [quad.x_ quad.y_+quad.height_/2 quad.width_/2 quad.height_/2];
-                obj.quads_(3) = quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
+                obj.quads_(3) = mcodekit.tree.quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
 
                 sub_geometry = [quad.x_+quad.width_/2 quad.y_+quad.height_/2 quad.width_/2 quad.height_/2];
-                obj.quads_(4) = quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
+                obj.quads_(4) = mcodekit.tree.quad_tree_node(obj.parent_, obj.depth_+1, obj.node_capacity_, obj.max_depth_, sub_geometry);
                 
                 for i=1:length(obj.points_)
                     bool = obj.push_down_point(obj.points_(i));

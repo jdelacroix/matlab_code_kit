@@ -29,28 +29,28 @@ classdef quad_tree < handle
             hold(qt_parent, 'on');
             axis(qt_parent, [qt_geometry(1) qt_geometry(1)+qt_geometry(3) qt_geometry(2) qt_geometry(2)+qt_geometry(4)]);
             
-            obj.root_ = quad_tree_node(qt_parent, obj.depth_, qt_node_capacity, qt_max_depth, qt_geometry);
+            obj.root_ = mcodekit.tree.quad_tree_node(qt_parent, obj.depth_, qt_node_capacity, qt_max_depth, qt_geometry);
             obj.geometry_ = obj.root_.geometry_;
             obj.parent_ = qt_parent;
             set(obj.parent_, 'ButtonDownFcn', @obj.find_quad_by_click);
         end
         
         function insert_point(obj, qt_point)
-            bool = obj.root_.insert_point(quad_tree_point(obj.parent_,qt_point));
+            bool = obj.root_.insert_point(mcodekit.tree.quad_tree_point(obj.parent_,qt_point));
             if (~bool)
                 error('point does not fit in tree');
             end
         end
         
         function find_fixed_radius_neighbors(obj, qt_point, qt_radius)
-            t = quad_tree_point(obj.parent_, qt_point);
+            t = mcodekit.tree.quad_tree_point(obj.parent_, qt_point);
             set(t.gfx_, 'MarkerFaceColor', 'k');
             set(t.gfx_, 'MarkerEdgeColor', 'k');
             
             theta = linspace(0, 2*pi, 2000);
             plot(obj.parent_, (qt_point(1)+qt_radius*cos(theta)), (qt_point(2)+qt_radius*sin(theta)), 'k-');
             
-            q = fifo_queue();
+            q = mcodekit.queue.fifo_queue();
             q.enqueue(obj.root_);
             p = fifo_queue();
             while(~q.empty())
@@ -114,7 +114,7 @@ classdef quad_tree < handle
         function find_quad_by_click(obj, src, event)
             click = get(obj.parent_, 'CurrentPoint');
             click_src = click(1,1:2);
-            p = quad_tree_point([],click_src);
+            p = mcodekit.tree.quad_tree_point([],click_src);
             
             q = obj.root_;
             while(q.partitioned_)
@@ -138,4 +138,3 @@ classdef quad_tree < handle
     end
     
 end
-

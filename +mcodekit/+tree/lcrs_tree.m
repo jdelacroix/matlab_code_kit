@@ -19,7 +19,7 @@ classdef lcrs_tree < handle
                     if(isa(varargin{1},'lrcs_tree_node'))
                         obj.root_ = varargin{1};
                     else
-                        obj.root_ = node(varargin{1});
+                        obj.root_ = mcodekit.tree.lcrs_tree_node(varargin{1});
                     end
                     obj.height_ = 0;
                 otherwise
@@ -48,4 +48,3 @@ classdef lcrs_tree < handle
     end
     
 end
-

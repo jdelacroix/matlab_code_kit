@@ -1,6 +1,6 @@
 function test_quad_tree()
 
-q = quad_tree([0 0 10 10], 4, 8);
+q = mcodekit.tree.quad_tree([0 0 10 10], 4, 8);
 n = 500;
 x = 10.*rand(n,1);
 y = 10.*rand(n,1);

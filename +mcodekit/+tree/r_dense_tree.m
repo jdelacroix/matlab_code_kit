@@ -1,4 +1,4 @@
-classdef r_dense_tree < lcrs_tree
+classdef r_dense_tree < mcodekit.tree.lcrs_tree
 
 % Copyright (C) 2012 Jean-Pierre de la Croix
 % see the LICENSE file included with this software
@@ -10,7 +10,7 @@ classdef r_dense_tree < lcrs_tree
     methods
         
         function obj = r_dense_tree()
-            obj = obj@lcrs_tree();
+            obj = obj@mcodekit.tree.lcrs_tree();
         end
         
         function seed_tree(obj, q_0)
@@ -32,12 +32,12 @@ classdef r_dense_tree < lcrs_tree
         
         function q_rand = rand_conf(obj)
             [m, n] = size(obj.root_.key_);
-            q_rand = node(rand(m,n));
+            q_rand = mcodekit.tree.lcrs_tree_node(rand(m,n));
         end
         
         function [q_near, d] = nearest_vertex(obj, q_rand)
             d = inf;
-            q = queue();
+            q = mcodekit.queue.fifo_queue();
             q.enqueue(obj.root_);
             while(q.size_ > 0)
                v = q.dequeue();
@@ -59,7 +59,7 @@ classdef r_dense_tree < lcrs_tree
         
         function q_new = new_conf(obj, q_near, q_rand)
             u = q_rand.key_-q_near.key_;
-            q_new = node(q_near, q_near.key_+1/norm(u)*u);
+            q_new = mcodekit.tree.lcrs_tree_node(q_near, q_near.key_+1/norm(u)*u);
         end
     end
     
