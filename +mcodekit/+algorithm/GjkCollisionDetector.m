@@ -66,14 +66,14 @@ classdef GjkCollisionDetector < handle
                 point_b = simplex.get_key(2);
                 point_c = simplex.get_key(1);
                 
-                vector_ab = point_b.v_ - point_a.v_;
-                vector_ac = point_c.v_ - point_a.v_;
+                vector_ab = point_b.v_-point_a.v_;
+                vector_ac = point_c.v_-point_a.v_;
                 
                 vector_ab_p = mcodekit.geometry.Vector2D.triple_vector_product(vector_ac, vector_ab, vector_ab).v_;
                 vector_ac_p = mcodekit.geometry.Vector2D.triple_vector_product(vector_ab, vector_ac, vector_ac).v_;
                 
-%                 vector_ab_p = obj.triple_vector_product(vector_ab, vector_ao, vector_ab);
-%                 vector_ac_p = obj.triple_vector_product(vector_ac, vector_ao, vector_ac);
+%                 vector_ab_p = mcodekit.geometry.Vector2D.triple_vector_product(vector_ab, vector_ao, vector_ab).v_;
+%                 vector_ac_p = mcodekit.geometry.Vector2D.triple_vector_product(vector_ac, vector_ao, vector_ac).v_;
                 
                 if (dot(vector_ac_p, vector_ao) >= 0)
                     simplex.remove_key(2);
