@@ -106,7 +106,7 @@ classdef GjkCollisionDetector < handle
         end
         
         function point = farthest_point_in_direction(obj, surface, direction)
-            k = surface.vertices_.get_iterator();
+            k = surface.vertex_set_.get_iterator();
             point = k.next();
             distance = dot(point.v_, direction.v_);
             while(k.has_next())
