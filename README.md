@@ -8,8 +8,8 @@ Contents:
 
 ##### Algoritms (mcodekit.algorithm)
 + Collision detector based on GJK distance algorithm (GjkCollisionDetector)
-+ Extended Kalman Filter
-+ Particle Filter
++ Extended Kalman filter
++ Particle (bootstrap) filter
 
 ##### Geometry (mcodekit.geometry)
 + 2D Line (Line2D)
@@ -20,11 +20,11 @@ Contents:
 + Doubly-linked list (dl_list_*)
 
 ##### Queues (mcodekit.queue)
-+ First In, First Out queue (fifo_queue)
++ First in, first out queue (fifo_queue)
 
 ##### Systems (mcodekit.system)
-+ Stochastic System
-+ Filtered System
++ Stochastic system
++ Filtered system
 
 ##### Trees (mcodekit.tree)
 + Quad Tree (quad_tree_*)
