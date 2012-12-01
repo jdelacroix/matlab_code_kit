@@ -7,11 +7,14 @@ classdef Surface2D < handle
         vertex_set_
         edge_set_
         centroid_
+        geometry_
     end
     
     methods
         function obj = Surface2D(geometry)
-            % create te vertex set
+            obj.geometry_ = geometry;
+            
+            % create the vertex set
             obj.vertex_set_ = mcodekit.list.dl_list();
             for k = 1:size(geometry, 1)
                 obj.vertex_set_.append_key(mcodekit.geometry.Vector2D(geometry(k,1), geometry(k,2)));
