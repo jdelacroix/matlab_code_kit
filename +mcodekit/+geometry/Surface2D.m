@@ -8,11 +8,21 @@ classdef Surface2D < handle
         edge_set_
         centroid_
         geometry_
+        handle_
     end
     
     methods
-        function obj = Surface2D(geometry)
-            obj.geometry_ = geometry;
+        function obj = Surface2D(varargin)
+            switch(nargin)
+                case 1,
+                    obj.geometry_ = varargin{1};
+                case 2,
+                    obj.handle_ = varargin{1};
+                    obj.geometry_ = varargin{2};
+                otherwise
+                    error('expected 1 or 2 arguments');
+            end
+            geometry = obj.geometry_;
             
             % create the vertex set
             obj.vertex_set_ = mcodekit.list.dl_list();
