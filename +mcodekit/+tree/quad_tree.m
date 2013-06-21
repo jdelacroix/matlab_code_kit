@@ -52,7 +52,7 @@ classdef quad_tree < handle
             
             q = mcodekit.queue.fifo_queue();
             q.enqueue(obj.root_);
-            p = fifo_queue();
+            p = mcodekit.queue.fifo_queue();
             while(~q.empty())
                 node = q.dequeue();
                 if(node.partitioned_)
