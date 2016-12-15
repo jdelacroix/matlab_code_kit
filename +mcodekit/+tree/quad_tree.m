@@ -163,6 +163,10 @@ classdef quad_tree < handle
             click_src = click(1,1:2);
             p = mcodekit.tree.quad_tree_point([],click_src);
 
+            find_quad_neighbor(obj, p);
+        end
+
+        function find_quad_neighbor(obj, p)
             q = obj.root_;
             % Find which quad contains the click point
             while(q.partitioned_)
@@ -220,7 +224,6 @@ classdef quad_tree < handle
                 end
                 set(q_.geometry_.gfx_, 'FaceColor', 'c');
             end
-
         end
 
     end

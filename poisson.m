@@ -1,5 +1,5 @@
 
-addpath('./matlab_code_kit/');
+addpath('.');
 
 % [Axis], max elements per node, max tree depth
 q = mcodekit.tree.quad_tree([0,0,10,10],4,8);
